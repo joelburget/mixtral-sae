@@ -2,7 +2,7 @@ import os
 
 import torch
 from sae_lens import SAETrainingRunner, LanguageModelSAERunnerConfig
-from transformers import AutoConfig
+from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 from transformer_lens import HookedTransformer
 
 from Auto_HookPoint import (
@@ -121,10 +121,16 @@ if __name__ == "__main__":
             checkpoint_path=f"checkpoints-layer{layer}",
             dtype="float32",
         )
+
+        model = AutoModelForCausalLM.from_pretrained(
+            MODEL_NAME, device_map="balanced_low_0"
+        )
+        tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
         hooked_model = HookedTransformerAdapter(
             adapter_cfg=adapter_cfg,
             hooked_transformer_cfg=hooked_transformer_cfg,
-            hf_model_name=MODEL_NAME,
+            model=model,
+            tokenizer=tokenizer,
         ).to(device)
 
         cfg.device = device

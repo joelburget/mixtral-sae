@@ -112,7 +112,7 @@ if __name__ == "__main__":
             dead_feature_threshold=1e-4,
             # WANDB
             log_to_wandb=True,
-            wandb_project=f"SAE-{MODEL_NAME}-layer{layer}",
+            wandb_project=f"SAE-mixtral-8x7b-v0.1-layer{layer}",
             wandb_log_frequency=30,
             eval_every_n_wandb_logs=20,
             # Misc
@@ -131,7 +131,7 @@ if __name__ == "__main__":
             hooked_transformer_cfg=hooked_transformer_cfg,
             model=model,
             tokenizer=tokenizer,
-        ).to(device)
+        )
 
         cfg.device = device
         sae = SAETrainingRunner(cfg, override_model=hooked_model).run()

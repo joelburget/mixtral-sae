@@ -1,4 +1,4 @@
 transformers
-git+https://github.com/neelnanda-io/TransformerLens.git
+transformer_lens
 git+https://github.com/jbloomAus/SAELens.git
-git@github.com:HP2706/Auto_HookPoint.git
+git+https://github.com/HP2706/Auto_HookPoint.git

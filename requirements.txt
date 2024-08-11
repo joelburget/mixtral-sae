@@ -1,4 +1,4 @@
-transformers
-transformer_lens
+transformers==4.44.0
+transformer_lens==2.3.0
 git+https://github.com/jbloomAus/SAELens.git
-git+https://github.com/HP2706/Auto_HookPoint.git
+git+https://github.com/joelburget/Auto_HookPoint.git

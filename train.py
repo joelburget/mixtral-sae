@@ -122,9 +122,7 @@ if __name__ == "__main__":
             dtype="float32",
         )
 
-        model = AutoModelForCausalLM.from_pretrained(
-            MODEL_NAME, device_map="balanced_low_0"
-        )
+        model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, device_map="balanced")
         tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
         hooked_model = HookedTransformerAdapter(
             adapter_cfg=adapter_cfg,

@@ -131,6 +131,7 @@ if __name__ == "__main__":
             hooked_transformer_cfg=hooked_transformer_cfg,
             model=model,
             tokenizer=tokenizer,
+            move_to_device=False,
         )
 
         cfg.device = device

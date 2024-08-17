@@ -19,8 +19,8 @@ MODEL_NAME = "mistralai/Mixtral-8x7B-v0.1"
 
 auto_config = AutoConfig.from_pretrained(MODEL_NAME)
 
-total_training_steps = 50_000
-batch_size = 8
+total_training_steps = 5_000
+batch_size = 4096
 total_training_tokens = total_training_steps * batch_size
 expansion_factor = 8
 lr = 4e-5
@@ -96,7 +96,7 @@ if __name__ == "__main__":
             lr_scheduler_name="constant",
             lr_warm_up_steps=lr_warm_up_steps,
             lr_decay_steps=lr_decay_steps,
-            l1_coefficient=5,
+            l1_coefficient=2,
             l1_warm_up_steps=l1_warm_up_steps,
             lp_norm=lp_norm,
             train_batch_size_tokens=batch_size,

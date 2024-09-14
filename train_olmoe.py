@@ -4,6 +4,7 @@ import wandb
 import torch
 from sae_lens import SAETrainingRunner, LanguageModelSAERunnerConfig
 from transformers import AutoConfig
+from transformer_lens import HookedTransformer
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["WANDB__SERVICE_WAIT"] = "300"
@@ -77,8 +78,11 @@ def train(config=None):
             dtype="bfloat16",
         )
 
-        sae = SAETrainingRunner(cfg).run()
+        model = HookedTransformer.from_pretrained(MODEL_NAME, first_n_layers=layer + 1)
+
+        sae = SAETrainingRunner(cfg, override_model=model).run()
         sae.save_model(f"trained-layer{layer}")
+
 
 if __name__ == "__main__":
     with open("./olmoe-config.yaml") as file:

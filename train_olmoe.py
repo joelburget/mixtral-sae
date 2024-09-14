@@ -37,7 +37,7 @@ def train(config=None):
 
         cfg = LanguageModelSAERunnerConfig(
             model_name=MODEL_NAME,
-            hook_name=f"model.layers.{layer}.post_attention_layernorm.hook_point",
+            hook_name=f"blocks.{layer}.hook_resid_pre",
             hook_layer=layer,
             d_in=auto_config.hidden_size,
             dataset_path="allenai/OLMoE-mix-0924",

@@ -1,4 +1,4 @@
-program: train_olmoe.py
+program: sweep_olmoe.py
 name: sweep
 method: bayes
 metric:

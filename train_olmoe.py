@@ -10,7 +10,7 @@ os.environ["WANDB__SERVICE_WAIT"] = "300"
 
 MODEL_NAME = "allenai/OLMoE-1B-7B-0924"
 auto_config = AutoConfig.from_pretrained(MODEL_NAME)
-total_training_steps = 2_000_000
+total_training_steps = 50_000
 batch_size = 4096
 total_training_tokens = total_training_steps * batch_size
 expansion_factor = 8
